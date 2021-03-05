@@ -1,0 +1,462 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+      body {
+
+	color: #3e3e3e;
+	background: #15081f url('bg.jpg') top center no-repeat;
+        position: relative;
+      }
+
+      bar { position: absolute;}
+
+      #disqus_thread {
+        position: relative;
+
+        margin: 50px 0 100px 450px;
+        margin: 28px auto;
+        width: 1000px;
+
+      }
+
+      .dsq-thread-hidden {
+        display: none;
+      }
+
+      .dsq-thread-visible {
+        display: block;
+      }
+
+      #dsq-content {
+        background-color: white;
+	color: #241332;
+        padding: 15px;
+      }
+
+
+      #anim1 {
+        position: relative;
+
+        margin: 50px 0 100px 450px;
+        margin: 28px auto;
+        padding: 0px;
+        width: 1000px;
+
+        overflow: hidden;
+      }
+
+      #mybuttons {
+        margin: 15px auto;
+        width: 832px;
+        text-align: center;
+      }
+
+      #bg {
+        margin: 0px;
+        padding: 0px;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: white;
+        opacity:0.2;
+      }
+
+      #anim2 {
+        position: relative;
+
+        -webkit-perspective: 1200;
+        -moz-perspective: 1200;
+        perspective: 1200;
+
+        -webkit-transition: all 2s ease-in-out;
+        -moz-transition: all 2s ease-in-out;
+        transition: all 2s ease-in-out;
+
+        margin: 100px 0 100px 450px;
+        margin: 10px auto;
+        padding: 0px;
+        width: 832px;
+        height: 440px;
+
+        -webkit-backface-visibility: visible;
+        -moz-backface-visibility: visible;
+        backface-visibility: visible;
+
+      }
+
+      #left-front {
+        position: absolute;
+        top : 0;
+        left : 208;
+
+        -webkit-transition: all 2s ease-in-out;
+        -moz-transition: all 2s ease-in-out;
+        transition: transform 2s ease-in-out;
+
+      }
+
+      .build-step0 #left-front {
+        -webkit-transform: rotate3d(0, 1, 0, 0deg);
+        -moz-transform: rotate3d(0, 1, 0, 0deg);
+        transform: rotate3d(0, 1, 0, 0deg);
+
+        -webkit-transform-origin:0% 0%;
+        -moz-transform-origin:0% 0%;
+        transform-origin:0% 0%;
+
+        opacity: 1;
+        z-index: 20;
+      }
+
+      .build-step1  #left-front {
+        left : 416;
+
+        -webkit-transform: rotate3d(0, 1, 0, -170deg);
+        -moz-transform: rotate3d(0, 1, 0, -170deg);
+        transform: rotate3d(0, 1, 0, -170deg);
+
+        -webkit-transform-origin:0% 0%;
+        -moz-transform-origin:0% 0%;
+        transform-origin:0% 0%;
+
+        opacity: 0.001;
+        visibility: hidden;
+        z-index: 19;
+      }
+
+      .build-step2 #left-front {
+        left : 0;
+
+        -webkit-transform: rotate3d(0, 1, 0, -170deg);
+        -moz-transform: rotate3d(0, 1, 0, -170deg);
+        transform: rotate3d(0, 1, 0, -170deg);
+
+        -webkit-transform-origin:0% 0%;
+        -moz-transform-origin:0% 0%;
+        transform-origin:0% 0%;
+
+        opacity: 0.001;
+        visibility: hidden;
+        z-index: 19;
+      }
+
+      #left-back {
+        position: absolute;
+        top : 0;
+        left : -208;
+
+        -webkit-transition: all 2s ease-in-out;
+        -moz-transition: all 2s ease-in-out;
+        transition: transform 2s ease-in-out;
+      }
+
+      .build-step0  #left-back {
+        -webkit-transform: rotate3d(0, 1, 0, 180deg);
+        -moz-transform: rotate3d(0, 1, 0, 180deg);
+        transform: rotate3d(0, 1, 0, 180deg);
+
+        -webkit-transform-origin:100% 0%;
+        -moz-transform-origin:100% 0%;
+        transform-origin:100% 0%;
+
+        opacity: 0.001;
+        visibility: hidden;
+      }
+
+      .build-step1  #left-back {
+
+        left : 0;
+
+        -webkit-transform: rotate3d(0, 1, 0, 0deg);
+        -moz-transform: rotate3d(0, 1, 0, 0deg);
+        transform: rotate3d(0, 1, 0, 0deg);
+
+        -webkit-transform-origin:100% 0%;
+        -moz-transform-origin:100% 0%;
+        transform-origin:100% 0%;
+
+        opacity: 1;
+      }
+
+      .build-step2  #left-back {
+
+        left : -412;
+
+        -webkit-transform: rotate3d(0, 1, 0, 0deg);
+        -moz-transform: rotate3d(0, 1, 0, 0deg);
+        transform: rotate3d(0, 1, 0, 0deg);
+
+        -webkit-transform-origin:100% 0%;
+        -moz-transform-origin:100% 0%;
+        transform-origin:100% 0%;
+
+        opacity: 1;
+      }
+
+
+      #right-front {
+        position: absolute;
+        top : 0;
+        left : 208;
+
+        -webkit-transition: all 2s ease-in-out;
+        -moz-transition: all 2s ease-in-out;
+        transition: all 2s ease-in-out;
+      }
+
+      .build-step0 #right-front {
+
+        -webkit-transform: rotate3d(0, 1, 0, 0deg);
+        -moz-transform: rotate3d(0, 1, 0, 0deg);
+        transform: rotate3d(0, 1, 0, 0deg);
+
+        -webkit-transform-origin:100% 0%;
+        -moz-transform-origin:100% 0%;
+        transform-origin:100% 0%;
+
+        opacity: 1;
+        visibility: hidden;
+      
+      }
+
+      .build-step1 #right-front {
+
+        left : 416;
+
+        -webkit-transform: rotate3d(0, 1, 0, 0deg);
+        -moz-transform: rotate3d(0, 1, 0, 0deg);
+        transform: rotate3d(0, 1, 0, 0deg);
+
+        -webkit-transform-origin:100% 0%;
+        -moz-transform-origin:100% 0%;
+        transform-origin:100% 0%;
+
+        opacity: 1;
+
+      }
+
+      .build-step2 #right-front {
+        left : 0;
+
+        -webkit-transform: rotate3d(0, 1, 0, 170deg);
+        -moz-transform: rotate3d(0, 1, 0, 170deg);
+        transform: rotate3d(0, 1, 0, 170deg);
+
+        -webkit-transform-origin:100% 0%;
+        -moz-transform-origin:100% 0%;
+        transform-origin:100% 0%;
+
+        opacity: 0.001;
+        visibility: hidden;
+
+      }
+
+
+      #right-back {
+        position: absolute;
+        top : 0;
+        left : 208;
+
+        -webkit-transition: all 2s ease-in-out;
+        -moz-transition: all 2s ease-in-out;
+        transition: all 2s ease-in-out;
+      }
+
+      .build-step0 #right-back {
+        left : 624;
+        -webkit-transform: rotate3d(0, 1, 0, -180deg);
+        -moz-transform: rotate3d(0, 1, 0, -180deg);
+        transform: rotate3d(0, 1, 0, -180deg);
+
+        -webkit-transform-origin: 0% 0%;
+        -moz-transform-origin: 0% 0%;
+        transform-origin: 0% 0%;
+
+        opacity: 0.001;
+        visibility: hidden;
+      }
+
+      .build-step1 #right-back {
+        left : 832;
+        -webkit-transform: rotate3d(0, 1, 0, -180deg);
+        -moz-transform: rotate3d(0, 1, 0, -180deg);
+        transform: rotate3d(0, 1, 0, -180deg);
+
+        -webkit-transform-origin: 0% 0%;
+        -moz-transform-origin: 0% 0%;
+        transform-origin: 0% 0%;
+
+        opacity: 0.001;
+        visibility: hidden;
+      }
+
+      .build-step2 #right-back {
+        left : 416;
+        -webkit-transform: rotate3d(0, 1, 0, 0deg);
+        -moz-transform: rotate3d(0, 1, 0, 0deg);
+        transform: rotate3d(0, 1, 0, 0deg);
+
+        -webkit-transform-origin: 0% 0%;
+        -moz-transform-origin: 0% 0%;
+        transform-origin: 0% 0%;
+
+        opacity: 1;
+        <!-- visibility: block; -->
+        <!-- visibility: block; -->
+      }
+
+      #center-back {
+        position: absolute;
+        top : 0;
+        left : 208;
+
+        -webkit-transition: all 2s ease-in-out;
+        -moz-transition: all 2s ease-in-out;
+        transition: all 2s ease-in-out;
+      }
+
+      .build-step1 #center-back {
+        visibility: hidden;
+      }
+
+      .build-step1 #center-back {
+        left : 416;
+        visibility: hidden;
+      }
+
+      .build-step2 #center-back {
+        left : 0;
+      }
+
+     .whitetext { color:white; margin:5pt; text-align: center;}
+
+     .build-step0 .s0 a {color:red;}
+     .build-step1 .s1 a {color:red;}
+     .build-step2 .s2 a {color:red;}
+
+     .build-step0 .s0 a:hover {color:red;}
+     .build-step1 .s1 a:hover {color:red;}
+     .build-step2 .s2 a:hover {color:red;}
+
+    </style>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+    <script type="text/javascript" src="fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+    <script type="text/javascript" src="fancybox/jquery.easing-1.3.pack.js"></script>
+    <link rel="stylesheet" href="fancybox/jquery.fancybox-1.3.4.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="button.css" type="text/css" media="screen" />
+
+  </head>
+  <body>
+
+    <div id="bar">
+      <div id="mybuttons" class="build">
+        <span class="button s0"><a href="#current" onclick="zerostep()">처음으로</a></span>
+        --
+        <span class="button s1"><a href="#current" onclick="firststep()">첫번째 속지</a></span>
+        --
+        <span class="button s2"><a href="#current" onclick="secondstep()">두번째 속지</a></span>
+        -- --
+        <span class="button"><a href="S2_02.jpg" class="fancybox">뒤표지</a></span>
+      <br>
+      <br>
+       <span class="button black"><a href="invitation_card.pdf">download a pdf version</a></span>
+       <span class="button black"><a href="map.pdf">direction only</a></span>
+      </div>
+    </div>
+
+    <div id="anim1">
+      <div id="bg"></div>
+       <div class="whitetext"> Click the images to enlarge! </div>
+    <div id="anim2" class="build">
+      <div class="build build-step0">
+       <a href="S1_02.jpg" class="fancybox">
+        <img src="S1_02.jpg" id="center-back" width="416pt">
+       </a>
+      </div>
+      <div class="build  build-step0">
+       <a href="S1_03.jpg" class="fancybox">
+        <img src="S1_03.jpg" id="right-back" width="416pt">
+       </a>
+      </div>
+      <div class="build  build-step0">
+       <a href="S2_01.jpg" class="fancybox">
+        <img src="S2_01.jpg" id="right-front" width="416pt">
+       </a>
+      </div>
+      <div class="build  build-step0">
+       <a href="S1_01.jpg" class="fancybox">
+       <img src="S1_01.jpg" id="left-back" width="416pt">
+       </a>
+      </div>
+      <div class="build">
+       <a href="S2_03.jpg" class="fancybox">
+         <img src="S2_03.jpg" id="left-front" width="416pt">
+       </a>
+      </div>
+      <!-- <img src="images/allnew.png" id="img2"> -->
+    </div>
+    </div>
+
+
+    <div id="mybuttons" class="build">
+        <span class="button s0"><a href="#current" onclick="showcomment()">방문록</a></span>
+    </div>
+
+<div id="disqus_thread" class="dsq-thread-hidden"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'weddinginvitation-aeree-and-jj'; // required: replace example with your forum shortname
+    var disqus_url = 'http://dl.dropbox.com/u/178748/wedding_invitation/invitation_card.html';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<!-- <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a> -->
+
+
+
+    <script type="text/javascript" src="sl.js"></script>
+
+   <script>
+     if ($.browser.msie) {
+       alert( "MS IE is not supported, please use Firefox, Google Chrome or Safary browsers." );
+     }
+
+     $(document).ready(function() {
+
+	/* This is basic - uses default settings */
+
+	$("a#single_image").fancybox();
+
+	/* Using custom settings */
+
+	$("a#inline").fancybox({
+		'hideOnContentClick': true
+	});
+
+	/* Apply fancybox to multiple items */
+
+	$("a.fancybox").fancybox({
+		'hideOnContentClick': true,
+		'transitionIn'	:	'fade',
+		'transitionOut'	:	'fade',
+		'speedIn'		:	600,
+		'speedOut'		:	200,
+		'overlayShow'	:	false
+	});
+
+        zerostep();
+
+      });
+
+   </script>
+
+
+  </body>
+</html>
